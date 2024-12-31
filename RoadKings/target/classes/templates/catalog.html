@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoadKings</title>
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="/" class="logo">
+                <img th:src="@{/logo1.png}" alt="Logo" class="logo-img">
+            </a>
+            <div class="search">
+                <input type="text" placeholder="Search for cars...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="icons">
+                <a th:href="@{/user}" title="Profile">
+                  <i class="fas fa-user-circle"></i>
+                </a>
+                <a th:href="@{/logout}" class="logout-link">
+                  <i class="fas fa-sign-out-alt" title="Logout"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="hero-image" >
+        <div class="hero-text">
+            <h1>Welcome to Our Car Dealership</h1>
+            <p>Find the perfect car for you</p>
+            <a href="#explore" class="hero-btn">Explore Now</a>
+        </div>
+    </div>
+
+    <section id="explore">
+        <h1>Explore Our Cars</h1>
+        <div class="car-container">
+            <!-- Loop through the cars dynamically using Thymeleaf -->
+            <div class="car" th:each="car : ${cars}">
+                <img th:src="@{/img11.png}" alt="Car Image" class="car-img">
+                <h2 th:text="${car.name}">Car Name</h2>
+                <p th:text="${car.price}">Car Price</p>
+                <button class="car-btn" th:onclick="'addToCart(' + ${car.id} + ')'">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

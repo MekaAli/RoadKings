@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Voiture</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <h1>Edit Voiture</h1>
+    <form action="#" th:action="@{/voitures/edit/{id}(id=${voiture.idVoiture})}" th:object="${voiture}" method="post">
+        <div>
+            <label for="modelName">Model Name:</label>
+            <input type="text" id="modelName" th:field="*{modelName}" required />
+        </div>
+
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" th:field="*{description}" required></textarea>
+        </div>
+
+        <div>
+            <label for="marque">Marque:</label>
+            <input type="text" id="marque" th:field="*{marque}" required />
+        </div>
+
+        <div>
+            <label for="basePrice">Base Price:</label>
+            <input type="number" id="basePrice" th:field="*{basePrice}" required />
+        </div>
+
+        <div>
+            <label for="energie">Energie:</label>
+            <select id="energie" th:field="*{energie}" required>
+                <option th:each="type : ${powerTypes}" th:value="${type}" th:text="${type}"></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="voiture_images">Images (comma-separated URLs):</label>
+            <input type="text" id="voiture_images" th:field="*{voiture_images}" />
+        </div>
+
+        <button type="submit">Update Voiture</button>
+    </form>
+    <a href="/voitures/list">Back to List</a>
+</body>
+</html>

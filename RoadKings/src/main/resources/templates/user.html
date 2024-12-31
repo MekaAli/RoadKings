@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="/" class="logo">
+                <img th:src="@{/logo1.png}" alt="Logo" class="logo-img">
+            </a>
+            <div class="search">
+                <input type="text" placeholder="Search for cars...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="icons">
+                <a th:href="@{/logout}" class="logout-link">
+                  <i class="fas fa-sign-out-alt" title="Logout"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <h1>Welcome, <span th:text="${user.nom}">User Name</span> <span th:text="${user.prenom}">User Last Name</span></h1>
+        <p>Email: <span th:text="${user.adresseEmail}">User Email</span></p>
+        <p>Phone: <span th:text="${user.numeroTel}">User Phone</span></p>
+        <p>Role: <span th:text="${user.role}">User Role</span></p>
+        <p>User ID: <span th:text="${user.id_user}">User ID</span></p>
+        <a href="/catalog" class="btn">Back to Home</a>
+    </div>
+    
+</body>
+</html>
